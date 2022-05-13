@@ -1,10 +1,18 @@
 import React from 'react'
 
-const Button = (props: React.ComponentProps<'button'>) => {
+type ButtonType = {
+	type: 'button' | 'submit'
+	children: string
+	className?: string
+	id?: string
+	onClick: () => void
+	value: string
+}
+const Button = ({ type, children, className, onClick }: ButtonType) => {
 	return (
-		<div className={props.className}>
-			<button type={props.type} onClick={props.onClick}>
-				{props.children}
+		<div className={className}>
+			<button type={type} onClick={onClick}>
+				{children}
 			</button>
 		</div>
 	)
