@@ -2,11 +2,10 @@ import React from "react"
 
 export type ButtonProps = {
 	type: 'button' | 'submit'
-	children: string
+	children: React.ReactNode
 	className?: string
 	id?: string
 	onClick: () => void
-	value: string
 }
 
 export type InputProps = {

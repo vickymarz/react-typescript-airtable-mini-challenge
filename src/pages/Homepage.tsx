@@ -6,6 +6,10 @@ import styles from '../css/homepage.module.css'
 import { getStudent } from '../redux/students/student'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
 
+type LinkProps = {
+	to: React.AnchorHTMLAttributes<HTMLAnchorElement>
+}
+
 const Homepage = () => {
 	const [name, setName] = useState('')
 	const dispatch = useAppDispatch()
@@ -25,11 +29,11 @@ const Homepage = () => {
 						name='student'
 						id='student'
 						value={name}
-						onChange={(e) => setName(e.target.value)}
+						onChange={e => setName(e.target.value)}
 					/>
 
 					<Button type='submit' onClick={handleSubmit}>
-						<Link to={name.trim() !== '' && '/records'} state={recordList}>
+						<Link to:LinkProps={name.trim() !== '' && '/records'} state={recordList}>
 							Login
 						</Link>
 					</Button>
