@@ -1,6 +1,6 @@
 import React from 'react'
 
-type InputType = {
+type InputProps = {
 	type: string
 	name: string
 	className?: string
@@ -9,7 +9,7 @@ type InputType = {
 	value: string
 }
 
-const Input = ({ type, name, value, className, id, onChange }: InputType) => {
+const Input = ({ type, name, value, className, id, onChange }: InputProps) => {
 	return (
 		<>
 			<input

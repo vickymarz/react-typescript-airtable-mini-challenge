@@ -1,6 +1,6 @@
 import React from 'react'
 
-type ButtonType = {
+type ButtonProps = {
 	type: 'button' | 'submit'
 	children: string
 	className?: string
@@ -8,7 +8,7 @@ type ButtonType = {
 	onClick: () => void
 	value: string
 }
-const Button = ({ type, children, className, onClick }: ButtonType) => {
+const Button = ({ type, children, className, onClick }: ButtonProps) => {
 	return (
 		<div className={className}>
 			<button type={type} onClick={onClick}>
