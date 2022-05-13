@@ -1,3 +1,4 @@
+import React from "react"
 
 export type ButtonProps = {
 	type: 'button' | 'submit'
@@ -13,6 +14,6 @@ export type InputProps = {
 	name: string
 	className?: string
 	id?: string
-	onChange: () => void
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	value: string
 }

@@ -4,12 +4,12 @@ import Button from '../components/Button'
 import Input from '../components/Input'
 import styles from '../css/homepage.module.css'
 import { getStudent } from '../redux/students/student'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { useAppSelector, useAppDispatch } from '../app/hooks'
 
 const Homepage = () => {
 	const [name, setName] = useState('')
-	const dispatch = useDispatch()
-	const recordList = useSelector(state => state.records, shallowEqual)
+	const dispatch = useAppDispatch()
+	const recordList = useAppSelector(selectRecords)
 
 	const handleSubmit = () => {
 		if (name.trim() !== '') dispatch(getStudent(name))
@@ -25,7 +25,7 @@ const Homepage = () => {
 						name='student'
 						id='student'
 						value={name}
-						onChange={e => setName(e.target.value)}
+						onChange={(e) => setName(e.target.value)}
 					/>
 
 					<Button type='submit' onClick={handleSubmit}>
