@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { logout } from '../redux/students/student'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
 import Button from '../components/Button'
-import styles from '../css/studentRecord.module.css'
 
 type RecordProp = {
 	name: string
