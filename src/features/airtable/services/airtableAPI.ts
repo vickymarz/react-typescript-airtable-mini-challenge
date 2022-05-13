@@ -1,4 +1,4 @@
-const get = async (url: string) => {
+export const get = async (url: string) => {
 	const config = {
 		method: 'GET',
 		headers: {
