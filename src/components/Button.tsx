@@ -1,13 +1,6 @@
 import React from 'react'
+import { ButtonProps } from './elements.types'
 
-type ButtonProps = {
-	type: 'button' | 'submit'
-	children: string
-	className?: string
-	id?: string
-	onClick: () => void
-	value: string
-}
 const Button = ({ type, children, className, onClick }: ButtonProps) => {
 	return (
 		<div className={className}>

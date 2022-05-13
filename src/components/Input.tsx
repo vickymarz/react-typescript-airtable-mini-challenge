@@ -1,13 +1,5 @@
 import React from 'react'
-
-type InputProps = {
-	type: string
-	name: string
-	className?: string
-	id?: string
-	onChange: () => void
-	value: string
-}
+import { InputProps } from './elements.types'
 
 const Input = ({ type, name, value, className, id, onChange }: InputProps) => {
 	return (
