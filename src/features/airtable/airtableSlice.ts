@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState, AppThunk } from '../../app/store'
-import { fetchCount } from './counterAPI'
 
-export interface CounterState {
-	records: any[]
+
+type RecordState = {
+	record: any[]
 }
 
-const initialState: CounterState = 
+const initialState: RecordState = {
+	record: [],
+}
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

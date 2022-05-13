@@ -1,4 +1,4 @@
-export const get = async (url: string) => {
+export const getAirtableDatas = async (url: string) => {
 	const config = {
 		method: 'GET',
 		headers: {
@@ -15,4 +15,4 @@ export const get = async (url: string) => {
 	}
 }
 
-export default get
+export default getAirtableDatas
