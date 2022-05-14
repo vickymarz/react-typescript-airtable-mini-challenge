@@ -6,9 +6,9 @@ import styles from '../css/homepage.module.css'
 import { getStudent } from '../redux/students/student'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
 
-type LinkProps = {
-	to: React.AnchorHTMLAttributes<HTMLAnchorElement>
-}
+// type LinkProps = {
+// 	to: React.AnchorHTMLAttributes<HTMLAnchorElement>
+// }
 
 const Homepage = () => {
 	const [name, setName] = useState('')
@@ -33,7 +33,7 @@ const Homepage = () => {
 					/>
 
 					<Button type='submit' onClick={handleSubmit}>
-						<Link to:LinkProps={name.trim() !== '' && '/records'} state={recordList}>
+						<Link to={name.trim() !== '' && '/records'} state={recordList}>
 							Login
 						</Link>
 					</Button>

@@ -6,7 +6,7 @@ export type ButtonProps = {
 	className?: string
 	id?: string
 	onClick: () => void
-}
+} & React.ComponentProps<'button'>
 
 export type InputProps = {
 	type: string
