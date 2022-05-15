@@ -1,43 +1,66 @@
-import get from './fetchApi'
+import getAirtableDatas from './airtableAPI'
 import urlencode from 'urlencode'
 import { BASE_URL } from './rootEndpoints'
 import { STUDENTS_FIELD_ID } from './rootEndpoints'
 import { CLASS_FIELD_ID } from './rootEndpoints'
 
-const getStudentDetails = async name => {
+type classDetailsProps = {
+	fields: {
+		Classes: []
+	}
+}
+
+type recordType = {
+	records: []
+}
+
+type studentProp = {
+	records: {
+		id: string
+		fields: {
+			Name: string[]
+		}
+		}[]
+}
+
+const getStudentDetails = async (name: string) => {
 	const formular = urlencode(`({Name} = '${name}')`)
-	const result = await get(`${BASE_URL}/${STUDENTS_FIELD_ID}/?filterByFormula=${formular}`)
+	const result = await getAirtableDatas(
+		`${BASE_URL}/${STUDENTS_FIELD_ID}/?filterByFormula=${formular}`,
+	)
 	return result.records
 }
 
-const getClassDetails = async name => {
+const getClassDetails = async (name: string) => {
 	const classDetails = await getStudentDetails(name)
-	let classIds = classDetails.map(classDetail => classDetail.fields.Classes)
-	let arr = []
-	let result
+	let classIds = classDetails.map((classDetail: classDetailsProps) => classDetail.fields.Classes)
+	let arr: string[] = []
+	let result: recordType
 
-	classIds.forEach(classId => {
+	classIds.forEach((classId: []) => {
 		arr = arr.concat(classId)
 	})
 
-	result = await get(`${BASE_URL}/${CLASS_FIELD_ID}/?filterByFormula=${filterByFormula(arr)}`)
-	return result.records.map(record => ({
+	result = await getAirtableDatas(
+		`${BASE_URL}/${CLASS_FIELD_ID}/?filterByFormula=${filterByFormula(arr)}`,
+	)
+	return result.records.map((record: { fields: { Name: string; Students: string[] } }) => ({
 		name: record.fields.Name,
 		students: record.fields.Students,
 	}))
 }
 
-const getStudentsFromClass = async name => {
+const getStudentsFromClass = async (name: string) => {
 	const results = await getClassDetails(name)
-	let studentList = []
+	let studentList: string[] = []
 	results.forEach(result => (studentList = [...studentList, ...result.students]))
-	studentList = [...new Set(studentList)]
-	const studentNames = await get(
+	studentList = [...Array.from(new Set(studentList))]
+	const studentNames: studentProp = await getAirtableDatas(
 		`${BASE_URL}/${STUDENTS_FIELD_ID}/?filterByFormula=${filterByFormula(studentList)}`,
 	)
 
 	const studentMap = new Map()
-	studentNames.records.forEach(student => {
+	studentNames.records.forEach(student=> {
 		studentMap.set(student.id, student.fields.Name)
 	})
 
@@ -48,7 +71,7 @@ const getStudentsFromClass = async name => {
 	return results
 }
 
-const filterByFormula = arr => {
+const filterByFormula = (arr: string[]) => {
 	let formularStr = 'OR('
 	arr.forEach((id, index) => {
 		formularStr += `RECORD_ID() = '${id}'`
