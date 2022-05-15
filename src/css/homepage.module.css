@@ -1,0 +1,14 @@
+.inputDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.studentInput {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
