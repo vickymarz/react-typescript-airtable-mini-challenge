@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState, AppThunk } from '../../app/store'
-import getStudentsFromClass from './services/studentServices' 
+import getStudentsFromClass from './services/studentServices'
 
-const GET_STUDENT = 'mini-extension/student/GET_STUDENT'
+const GET_STUDENT = 'records/GET_STUDENT'
 // const LOGOUT = 'mini-extension/student/LOGOUT'
 
 export type RecordState = {
@@ -21,20 +21,21 @@ export const getStudentsList = createAsyncThunk(GET_STUDENT, async (name: string
 export const airtableSlice = createSlice({
 	name: 'records',
 	initialState,
-	
+
 	reducers: {
-		getStudent: (state, action: PayloadAction<string>) => {
+		logout: state => {
+			state.records = []
+		},
+	},
+	extraReducers: builder => {
+		builder.addCase(getStudentsList.fulfilled, (state, action) => {
 			const { payload } = action
 			state.records = [...state.records, ...payload]
-		},
-		logout: (state) => {
-			state.records = []
-		}
+		})
 	},
-	
 })
 
-export const { getStudent, logout } = airtableSlice.actions
+export const { logout } = airtableSlice.actions
 
 export const recordList = (state: RootState) => state.records
 
