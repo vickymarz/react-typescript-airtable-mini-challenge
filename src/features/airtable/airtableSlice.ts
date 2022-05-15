@@ -3,7 +3,7 @@ import { RootState, AppThunk } from '../../app/store'
 import getStudentsFromClass from './services/studentServices' 
 
 const GET_STUDENT = 'mini-extension/student/GET_STUDENT'
-const LOGOUT = 'mini-extension/student/LOGOUT'
+// const LOGOUT = 'mini-extension/student/LOGOUT'
 
 export type RecordState = {
 	records: any[]
@@ -18,16 +18,16 @@ export const incrementAsync = createAsyncThunk(GET_STUDENT, async (name: string)
 	return result
 })
 
-export const counterSlice = createSlice({
+export const airtableSlice = createSlice({
 	name: 'records',
 	initialState,
-	// The `reducers` field lets us define reducers and generate associated actions
+	
 	reducers: {
 		getStudent: (state, action: PayloadAction<[]>) => {
 			const { payload } = action
 			state.records = [...state.records, ...payload]
 		},
-		logout: (state, action: PayloadAction<[]>) => {
+		logout: (state) => {
 			state.records = []
 		}
 	},
@@ -48,22 +48,8 @@ export const counterSlice = createSlice({
 	},
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { getStudent, logout } = airtableSlice.actions
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectCount = (state: RootState) => state.counter.value
+export const recordList = (state: RootState) => state.records
 
-// We can also write thunks by hand, which may contain both sync and async logic.
-// Here's an example of conditionally dispatching actions based on current state.
-export const incrementIfOdd =
-	(amount: number): AppThunk =>
-	(dispatch, getState) => {
-		const currentValue = selectCount(getState())
-		if (currentValue % 2 === 1) {
-			dispatch(incrementByAmount(amount))
-		}
-	}
-
-export default counterSlice.reducer
+export default airtableSlice.reducer
