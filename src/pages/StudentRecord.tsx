@@ -14,7 +14,6 @@ type RecordProp = {
 const StudentRecord = () => {
 	const dispatch = useAppDispatch()
 	const recordLists = useAppSelector(recordList)
-	console.log(recordLists)
 	const navigate = useNavigate()
 
 	const handleClick = () => {
