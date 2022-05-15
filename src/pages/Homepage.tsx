@@ -4,11 +4,11 @@ import Button from '../components/Button'
 import Input from '../components/Input'
 import styles from '../css/homepage.module.css'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { getStudent, recordList } from '../features/airtable/airtableSlice'
+import { getStudentsList, recordList } from '../features/airtable/airtableSlice'
 
-// type LinkProps = {
-// 	to: React.AnchorHTMLAttributes<HTMLAnchorElement>
-// }
+type Props = {
+	to: string
+}
 
 const Homepage = () => {
 	const [name, setName] = useState('')
@@ -16,7 +16,7 @@ const Homepage = () => {
 	const recordLists = useAppSelector(recordList)
 
 	const handleSubmit = () => {
-		if (name.trim() !== '') dispatch(getStudent(name))
+		if (name.trim() !== '') dispatch(getStudentsList(name))
 	}
 
 	return (
@@ -33,7 +33,7 @@ const Homepage = () => {
 					/>
 
 					<Button type='submit' onClick={handleSubmit}>
-						<Link to={name.trim() !== '' && '/records'} state={recordLists}>
+						<Link to={name.trim() !== '' ? '/records' : ''} state={recordLists}>
 							Login
 						</Link>
 					</Button>
