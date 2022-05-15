@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { logout } from '../redux/students/student'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
 import Button from '../components/Button'
 import styles from '../css/studentRecord.module.css'
+import { logout } from '../features/airtable/airtableSlice'
+import { recordList } from '../features/airtable/airtableSlice'
 
 type RecordProp = {
 	name: string
@@ -12,7 +13,7 @@ type RecordProp = {
 
 const StudentRecord = () => {
 	const dispatch = useAppDispatch()
-	const recordList = useAppSelector(selectRecords)
+	const recordLists = useAppSelector(recordList)
 	const navigate = useNavigate()
 
 	const handleClick = () => {
@@ -25,12 +26,12 @@ const StudentRecord = () => {
 				Logout
 			</Button>
 			<ul className={styles.recordList}>
-				{recordList
+				{recordLists.records
 					.sort(
 						(a: { name: string }, b: { name: string }) =>
 							Number(a.name.split(' ')[1]) - Number(b.name.split(' ')[1]),
 					)
-					.map((record: RecordProp, id: string) => (
+					.map((record: RecordProp, id: string | number) => (
 						<li key={id} className={styles.records}>
 							<p>
 								<strong>Name</strong> <br />
