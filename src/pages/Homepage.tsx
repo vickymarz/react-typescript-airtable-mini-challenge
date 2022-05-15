@@ -6,9 +6,7 @@ import styles from '../css/homepage.module.css'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
 import { getStudentsList, recordList } from '../features/airtable/airtableSlice'
 
-type Props = {
-	to: string
-}
+
 
 const Homepage = () => {
 	const [name, setName] = useState('')
