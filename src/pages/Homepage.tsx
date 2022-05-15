@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import styles from '../css/homepage.module.css'
-import { getStudent } from '../redux/students/student'
 import { useAppSelector, useAppDispatch } from '../app/hooks'
+import { getStudent, recordList } from '../features/airtable/airtableSlice'
 
 // type LinkProps = {
 // 	to: React.AnchorHTMLAttributes<HTMLAnchorElement>
@@ -13,7 +13,7 @@ import { useAppSelector, useAppDispatch } from '../app/hooks'
 const Homepage = () => {
 	const [name, setName] = useState('')
 	const dispatch = useAppDispatch()
-	const recordList = useAppSelector(selectRecords)
+	const recordLists = useAppSelector(recordList)
 
 	const handleSubmit = () => {
 		if (name.trim() !== '') dispatch(getStudent(name))
@@ -33,7 +33,7 @@ const Homepage = () => {
 					/>
 
 					<Button type='submit' onClick={handleSubmit}>
-						<Link to={name.trim() !== '' && '/records'} state={recordList}>
+						<Link to={name.trim() !== '' && '/records'} state={recordLists}>
 							Login
 						</Link>
 					</Button>
