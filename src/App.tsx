@@ -6,7 +6,7 @@ import StudentRecord from './pages/StudentRecord'
 function App() {
 	type IRoute = {
 		path: string
-    element: React.ReactNode
+		element: React.ReactNode
 	}[]
 
 	const routes: IRoute = [
@@ -14,7 +14,7 @@ function App() {
 		{ path: '/records', element: <StudentRecord /> },
 	]
 
-	const elements = useRoutes(routes)
+	const elements = useRoutes([...routes])
 
 	return elements
 }
