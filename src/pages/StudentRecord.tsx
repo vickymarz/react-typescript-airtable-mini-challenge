@@ -14,6 +14,7 @@ type RecordProp = {
 const StudentRecord = () => {
 	const dispatch = useAppDispatch()
 	const recordLists = useAppSelector(recordList)
+	console.log(recordLists)
 	const navigate = useNavigate()
 
 	const handleClick = () => {
@@ -25,9 +26,9 @@ const StudentRecord = () => {
 			<Button type='button' className={styles.button} onClick={handleClick}>
 				Logout
 			</Button>
-			<ul className={styles.recordList}>
+			<ul className={styles.recordListStyle}>
 				{recordLists.records
-					.sort(
+					.slice().sort(
 						(a: { name: string }, b: { name: string }) =>
 							Number(a.name.split(' ')[1]) - Number(b.name.split(' ')[1]),
 					)
