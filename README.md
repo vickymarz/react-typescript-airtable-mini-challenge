@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# Mini extension coding interview
+Mini extension coding challenge is a react project that seeks to test your knowledge in the use of airtable database and airtable API. This project uses redux to deploy the entire state of the app which is fetched from the [airtable database](https://airtable.com/app8ZbcPx7dkpOnP0)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+[Read the requirement here](https://app.miniextensions.com/form/VZeThdPvzkFvgBx9j7tb) 
 
-## Available Scripts
+## Built With
+- React (A free and open-source front-end JavaScript library for building user interfaces based on UI components)
+- Redux
+- Typescript.
+- CSS module
+- Airtable and Airtable API
 
-In the project directory, you can run:
+### Prerequisites
+The basic requirements for building the executable are:
 
-### `npm start`
+- A working browser application (Google chrome, Mozilla Fire fox, Microsoft edge ...)
+- VSCode or any other equivalent code editor
+- Node Package Manager (For installing packages like Lighthous, webhint & stylelint used for checking for debugging bad codes before deployment)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Getting Started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Cloning the project
 
-### `npm test`
+```
+git clone  https://github.com/vickymarz/react-typescript-airtable-mini-challenge <Your-Build-Directory>
+```
+## Getting packages and dependencies
+To get all package modules required to build the project run:
+```
+npm install
+```
+every package module required to build the project is listed in the package.json file. this is used as a reference to get all dependencies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Building 
 
-### `npm run build`
+To build the project run:
+```
+npm run build
+```
+after you run this sucessfully you'd locate the build from in the ```build``` folder located from the parent directory of the project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the program on a browser through a server run this command in your cli
+```
+npm start
+```
+This should open the page in your localhost on port 3000. then you'd be able to view the built page generated using webpack.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🤝 Contributing
 
-### `npm run eject`
+Feel free to check the [issues page](../../issues/).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Authors
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+👤 **Victor Okoroji**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- GitHub: [@githubhandle](https://github.com/vickymarz)
+- Twitter: [@twitterhandle](https://twitter.com/Vicky_marz)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/victorebubeokoroji/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Show your support
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Give a ⭐️ if you like this project!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgments
+
+- Mini Extensions
