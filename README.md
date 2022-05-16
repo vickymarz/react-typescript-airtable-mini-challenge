@@ -16,14 +16,6 @@ The basic requirements for building the executable are:
 - A working browser application (Google chrome, Mozilla Fire fox, Microsoft edge ...)
 - VSCode or any other equivalent code editor
 - Node Package Manager (For installing packages like Lighthous, webhint & stylelint used for checking for debugging bad codes before deployment)
-
-# Getting Started
-
-#### Cloning the project
-
-```
-git clone  https://github.com/vickymarz/react-typescript-airtable-mini-challenge <Your-Build-Directory>
-```
 ## Getting packages and dependencies
 To get all package modules required to build the project run:
 ```
