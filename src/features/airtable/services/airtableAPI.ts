@@ -2,7 +2,7 @@ export const getAirtableDatas = async (url: string) => {
 	const config = {
 		method: 'GET',
 		headers: {
-			Authorization: `Bearer key2St1cZmkAH2OXg`,
+			Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
 		},
 	}
 
